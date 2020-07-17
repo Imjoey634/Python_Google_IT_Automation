@@ -2,26 +2,8 @@
 
 import re
 def multi_vowel_words(text):
-  pattern = '[aeiou]{3}'
-  words = text.split(' ')
-
-  new_words = []
-
-  for e in words:
-    e = e.replace('.', '')
-    e = e.replace(',', '')
-    new_words.append(e)
-
-#   print(new_words)
-
-  match = re.findall(pattern, text)
-  
-  result = []
-  for word in new_words:
-      for mat in match:
-          if mat in word and word not in result:
-              result.append(word)
-
+  pattern = (r"\w+[aeiouaeiouaeiou+]{3,}\w+")
+  result = re.findall(pattern, text)
   return result
 
 print(multi_vowel_words("Life is beautiful")) 
@@ -34,6 +16,10 @@ print(multi_vowel_words("The rambunctious children had to sit quietly and await 
 # ['rambunctious', 'quietly', 'delicious']
 
 print(multi_vowel_words("The order of a data queue is First In First Out (FIFO)")) 
+# ['queue']
+
+print(multi_vowel_words("Hello world!")) 
+# []FO)")) 
 # ['queue']
 
 print(multi_vowel_words("Hello world!")) 
